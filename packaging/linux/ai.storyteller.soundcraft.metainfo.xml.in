@@ -5,14 +5,14 @@
   <id>ai.storyteller.soundcraft</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT OR Apache-2.0</project_license>
-  <name>SoundCraft</name>
+  <name>Unigreen Sound</name>
   <summary>Record, edit and mix audio and MIDI</summary>
   <developer id="ai.storyteller">
     <name>Learning Machines LLC</name>
   </developer>
   <description>
     <p>
-      SoundCraft is an open-source, native digital audio workstation. Record, edit and mix
+      Unigreen Sound is an open-source, native digital audio workstation. Record, edit and mix
       multitrack audio and MIDI in Edit and Mix windows that work the way studio engineers expect.
     </p>
     <ul>
@@ -42,8 +42,8 @@
     <keyword>midi</keyword>
   </keywords>
   <branding>
-    <color type="primary" scheme_preference="light">#8fd9e6</color>
-    <color type="primary" scheme_preference="dark">#0b7385</color>
+    <color type="primary" scheme_preference="light">#34d399</color>
+    <color type="primary" scheme_preference="dark">#0d1a12</color>
   </branding>
   <requires>
     <display_length compare="ge">760</display_length>

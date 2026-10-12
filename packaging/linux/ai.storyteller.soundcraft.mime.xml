@@ -4,7 +4,7 @@
      install). -->
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="application/x-soundcraft-session">
-    <comment>SoundCraft session</comment>
+    <comment>Unigreen Sound session</comment>
     <sub-class-of type="application/json"/>
     <icon name="ai.storyteller.soundcraft"/>
     <glob pattern="*.scraft"/>

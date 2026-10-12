@@ -10,8 +10,8 @@ Assets must be original, public domain (CC0) or permissively licensed. See `AGEN
 
 All UI icons (tools, transport, track buttons) are drawn procedurally in
 `crates/ui-egui/src/icons.rs` by the SoundCraft contributors (MIT OR Apache-2.0). No UI icon image
-files are used. The app icon (`assets/app-icon/`, a singing nightingale drawn as original SVG by
-the SoundCraft contributors) is listed under Files below.
+files are used. The app icon (`assets/app-icon/`, the Unigreen three-leaf mark on a Unigreen dark tile with the
+app label, by Unigreen Power Co., Ltd.) is listed under Files below.
 
 ## Audio
 
@@ -29,19 +29,17 @@ and, at runtime, the operating system's own UI fonts when available (never redis
 
 | Path | Author | Source | License |
 |---|---|---|---|
-| `docs/brand/artcraft-logo.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms (`docs/brand/LICENSE-brand.txt`) |
-| `docs/brand/artcraft-logo.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms |
-| `docs/brand/artcraft-logo-white.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms |
-| `docs/brand/artcraft-logo-white.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms |
-| `docs/brand/artcraft-mark.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms |
-| `docs/brand/artcraft-mark.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms |
-| `docs/brand/artcraft-mark-black.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms |
-| `docs/brand/artcraft-mark-black.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms |
-| `assets/app-icon/icon.svg` | SoundCraft contributors | original (hand-placed SVG paths; placeholder app icon) | MIT OR Apache-2.0 |
-| `packaging/macos/dmg/` (all files) | @XusBadia | original (macOS DMG window background and layout, from the app icon; see `packaging/macos/dmg/README.md`) | MIT OR Apache-2.0 |
-| `assets/app-icon/soundcraft-1024.png` | SoundCraft contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
-| `assets/app-icon/soundcraft-macos-512.png` | SoundCraft contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
-| `assets/app-icon/soundcraft.icns` | SoundCraft contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
-| `assets/app-icon/soundcraft.ico` | SoundCraft contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/` | SoundCraft contributors | original, rendered from `icon.svg` (16–512 px PNGs and the scalable SVG) | MIT OR Apache-2.0 |
+| `assets/brand/unigreen-logo.svg` | Unigreen Power Co., Ltd. | Unigreen logo (FINAL_LOGO.eps) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/brand/unigreen-logo.png` | Unigreen Power Co., Ltd. | Unigreen logo (FINAL_LOGO.eps) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/brand/unigreen-logo-white.svg` | Unigreen Power Co., Ltd. | Unigreen logo (FINAL_LOGO.eps) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/brand/unigreen-logo-white.png` | Unigreen Power Co., Ltd. | Unigreen logo (FINAL_LOGO.eps) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/brand/unigreen-mark.svg` | Unigreen Power Co., Ltd. | Unigreen logo (FINAL_LOGO.eps) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/brand/unigreen-mark.png` | Unigreen Power Co., Ltd. | Unigreen logo (FINAL_LOGO.eps) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/app-icon/icon.svg` | Unigreen Power Co., Ltd. | the Unigreen three-leaf mark on a Unigreen dark tile with the app label | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `packaging/macos/dmg/` (all files) | Unigreen Power Co., Ltd. (layout and generator originally by @XusBadia) | macOS DMG window background with the Unigreen logo and app icon; see `packaging/macos/dmg/README.md` | Unigreen logo: Unigreen trademark (see NOTICE); generator and layout: MIT OR Apache-2.0 |
+| `assets/app-icon/soundcraft-1024.png` | Unigreen Power Co., Ltd. | rendered from `icon.svg` | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/app-icon/soundcraft-macos-512.png` | Unigreen Power Co., Ltd. | rendered from `icon.svg` | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/app-icon/soundcraft.icns` | Unigreen Power Co., Ltd. | rendered from `icon.svg` | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/app-icon/soundcraft.ico` | Unigreen Power Co., Ltd. | rendered from `icon.svg` | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/app-icon/hicolor/` | Unigreen Power Co., Ltd. | rendered from `icon.svg` (16–512 px PNGs and the scalable SVG) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
 | `docs/images/` | SoundCraft contributors | screenshots of SoundCraft rendered from the synthesised demo session | MIT OR Apache-2.0 |

@@ -10,18 +10,18 @@
 -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
-      Name="SoundCraft"
-      Manufacturer="Learning Machines LLC"
+      Name="Unigreen Sound"
+      Manufacturer="Unigreen Power Co., Ltd."
       Version="$(var.Version)"
       UpgradeCode="EE53D3E5-D0AE-40F9-808D-9417FDEBF61A"
       Scope="perMachine"
       Compressed="yes"
       Language="1033">
-    <SummaryInformation Description="SoundCraft digital audio workstation" Manufacturer="Learning Machines LLC" />
+    <SummaryInformation Description="Unigreen Sound digital audio workstation" Manufacturer="Unigreen Power Co., Ltd." />
     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
     <MajorUpgrade AllowSameVersionUpgrades="yes"
-        DowngradeErrorMessage="A newer version of SoundCraft is already installed." />
+        DowngradeErrorMessage="A newer version of Unigreen Sound is already installed." />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <Icon Id="SoundcraftIcon.ico" SourceFile="$(var.IconPath)" />
@@ -31,11 +31,11 @@
     <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLFOLDER" Name="SoundCraft" />
+      <Directory Id="INSTALLFOLDER" Name="Unigreen Sound" />
     </StandardDirectory>
     <StandardDirectory Id="ProgramMenuFolder" />
 
-    <Feature Id="Main" Title="SoundCraft" Level="1">
+    <Feature Id="Main" Title="Unigreen Sound" Level="1">
       <ComponentGroupRef Id="SoundcraftFiles" />
     </Feature>
   </Package>
@@ -44,13 +44,13 @@
     <ComponentGroup Id="SoundcraftFiles" Directory="INSTALLFOLDER">
       <Component Id="SoundcraftApp" Guid="091136D7-205E-41A8-9D27-5E231F7CBBD4">
         <File Id="SoundcraftExe" Source="$(var.BinDir)\soundcraft.exe" KeyPath="yes">
-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="SoundCraft"
-              Description="SoundCraft digital audio workstation" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Unigreen Sound"
+              Description="Unigreen Sound digital audio workstation" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
               Icon="SoundcraftIcon.ico" IconIndex="0" />
         </File>
 
         <!-- .scraft: SoundCraft's own session format; SoundCraft is its default app. -->
-        <ProgId Id="SoundCraft.Session" Description="SoundCraft Session" Icon="SoundcraftExe" IconIndex="0">
+        <ProgId Id="SoundCraft.Session" Description="Unigreen Sound Session" Icon="SoundcraftExe" IconIndex="0">
           <Extension Id="scraft" ContentType="application/x-soundcraft-session">
             <Verb Id="open" Command="Open" TargetFile="SoundcraftExe" Argument="&quot;%1&quot;" />
           </Extension>
@@ -70,7 +70,7 @@
         <RegistryValue Root="HKLM" Key="Software\Classes\.midi\OpenWithProgids" Name="SoundCraft.Midi" Value="" Type="string" />
 
         <!-- "Open with" app list and the Run dialog (Win+R "soundcraft"). -->
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\soundcraft.exe" Name="FriendlyAppName" Value="SoundCraft" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\soundcraft.exe" Name="FriendlyAppName" Value="Unigreen Sound" Type="string" />
         <RegistryValue Root="HKLM" Key="Software\Classes\Applications\soundcraft.exe\shell\open\command" Value="&quot;[#SoundcraftExe]&quot; &quot;%1&quot;" Type="string" />
         <RegistryValue Root="HKLM" Key="Software\Classes\Applications\soundcraft.exe\SupportedTypes" Name=".scraft" Value="" Type="string" />
         <RegistryValue Root="HKLM" Key="Software\Classes\Applications\soundcraft.exe\SupportedTypes" Name=".wav" Value="" Type="string" />

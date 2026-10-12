@@ -7,9 +7,9 @@
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
   <key>CFBundleDisplayName</key>
-  <string>SoundCraft</string>
+  <string>Unigreen Sound</string>
   <key>CFBundleName</key>
-  <string>SoundCraft</string>
+  <string>Unigreen Sound</string>
   <key>CFBundleExecutable</key>
   <string>SoundCraft</string>
   <key>CFBundleIdentifier</key>
@@ -44,9 +44,9 @@
   <false/>
   <!-- Shown by macOS the first time SoundCraft opens an input device (recording). -->
   <key>NSMicrophoneUsageDescription</key>
-  <string>SoundCraft records audio from the input you choose.</string>
+  <string>Unigreen Sound records audio from the input you choose.</string>
   <key>NSHumanReadableCopyright</key>
-  <string>Copyright © the SoundCraft authors. MIT OR Apache-2.0.</string>
+  <string>Copyright © the SoundCraft authors and Unigreen Power Co., Ltd. MIT OR Apache-2.0.</string>
 
   <!-- SoundCraft's own format: a JSON session file next to an "Audio Files" folder. -->
   <key>UTExportedTypeDeclarations</key>
@@ -55,7 +55,7 @@
       <key>UTTypeIdentifier</key>
       <string>ai.storyteller.soundcraft.session</string>
       <key>UTTypeDescription</key>
-      <string>SoundCraft Session</string>
+      <string>Unigreen Sound Session</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -77,7 +77,7 @@
   <array>
     <dict>
       <key>CFBundleTypeName</key>
-      <string>SoundCraft Session</string>
+      <string>Unigreen Sound Session</string>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>LSHandlerRank</key>

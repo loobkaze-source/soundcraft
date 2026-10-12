@@ -129,7 +129,7 @@ fn populated_mix_instrument_uses_readable_palette_in_real_frames() {
             if !light {
                 let original = Color32::from_rgb(52, 62, 80);
                 assert_eq!(painted.fill, if hovered { original.gamma_multiply(1.3) } else { original });
-                assert_eq!(painted.border, Color32::from_rgb(16, 16, 16));
+                assert_eq!(painted.border, Color32::from_rgb(11, 21, 15));
             }
             if let Some(dir) = &proof_dir {
                 harness.render().unwrap().save(dir.join(format!("{name}-{}.png", if hovered { "hover" } else { "ordinary" }))).unwrap();

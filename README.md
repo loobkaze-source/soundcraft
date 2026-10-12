@@ -1,13 +1,17 @@
 <p align="center">
-  <a href="https://getartcraft.com/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/artcraft-logo-white.svg">
-      <img alt="ArtCraft" src="docs/brand/artcraft-logo.svg" width="200">
-    </picture>
-  </a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/unigreen-logo-white.svg">
+    <img alt="Unigreen" src="assets/brand/unigreen-logo.svg" width="240">
+  </picture>
 </p>
 
-<h1 align="center">SoundCraft</h1>
+<h1 align="center">Unigreen Sound</h1>
+
+<p align="center">
+  Unigreen Sound is Unigreen Power's distribution of
+  <a href="https://github.com/storytold/soundcraft">SoundCraft</a>, based on SoundCraft by the ArtCraft team.
+  Everything below this header is SoundCraft's upstream README.
+</p>
 
 <p align="center">
   <b>Recording, editing and mixing audio; an open-source, clean-room reimplementation of Avid Pro Tools, rebuilt in pure Rust.</b>
@@ -375,8 +379,7 @@ Forks and modified versions must remove them.
 <sub>Adobe, Photoshop, Illustrator, Premiere Pro, Lightroom, Acrobat, After Effects and InDesign are trademarks or registered trademarks of Adobe Inc. in the United States and/or other countries. SoundCraft is an independent, open-source project and is not affiliated with, sponsored by or endorsed by Adobe Inc.; these names are used only to describe the workflows it is compatible with.</sub>
 
 <p align="center">
-  <a href="https://getartcraft.com/"><img alt="ArtCraft" src="docs/brand/artcraft-mark.svg" width="28"></a><br>
-  <sub>Made by the <a href="https://getartcraft.com/">ArtCraft</a> team and community.</sub>
+  <sub>SoundCraft is made by the <a href="https://getartcraft.com/">ArtCraft</a> team and community.</sub>
 </p>
 
 Tracks and Groups, Clips, MIDI Editor, Memory Locations, and Undo History use movable panels. Edit and Mix retain separate arrangements; Clips and MIDI Editor belong to Edit. Transport, plug-in, and specialist utility windows retain their existing hosts. Drag a panel header to a target edge or another header. Its context menu offers Float panel, Move to group, and Close panel. Existing panel toggles reopen panels at their saved location; Reset Panel Layout restores the app layout. Floating panels remain inside the current app window.
