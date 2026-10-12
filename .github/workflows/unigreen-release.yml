@@ -70,6 +70,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # Name the downloads after the Unigreen product, not the upstream package.
+          for f in artifacts/*; do
+            b=$(basename "$f"); n="${b/#soundcraft-cli-/unigreen-sound-cli-}"; n="${n/#soundcraft-/unigreen-sound-}"
+            [ "$n" = "$b" ] || mv "$f" "artifacts/$n"
+          done
           VERSION=$(awk '/^\[workspace.package\]/{p=1;next} /^\[/{p=0} p && /^version *=/{gsub(/[" ]/,"",$0); split($0,a,"="); print a[2]; exit}' Cargo.toml)
           if [ "${GITHUB_REF_TYPE}" = "tag" ]; then TAG="${GITHUB_REF_NAME}"; else TAG="unigreen-v${VERSION}-build.${GITHUB_RUN_NUMBER}"; fi
           cat > notes.md <<EOF
