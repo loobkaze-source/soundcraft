@@ -1,0 +1,89 @@
+# Unigreen installers: builds an unsigned Windows MSI + portable zip and a macOS universal DMG
+# with the repo's own packaging scripts, then publishes them as a GitHub release on this fork.
+#
+# Run it from the Actions tab ("Unigreen Release" -> Run workflow), or push a tag `unigreen-v*`.
+# Unsigned: Windows SmartScreen and macOS Gatekeeper warn on first launch (see the release notes).
+# Add the signing secrets the packaging scripts read (WINDOWS_CERTIFICATE / AZURE_*,
+# APPLE_CERTIFICATE ...) to sign later; the scripts skip signing when they are absent.
+name: Unigreen Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["unigreen-v*"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: unigreen-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rust toolchain
+        run: rustup update stable && rustup default stable
+      - name: WiX v5
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2
+      - name: Package (x64)
+        shell: pwsh
+        run: pwsh packaging/windows/package.ps1 -Arch x64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-x64
+          path: dist/release/*
+          if-no-files-found: error
+
+  macos:
+    runs-on: macos-15
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rust toolchain
+        run: |
+          rustup update stable && rustup default stable
+          rustup target add aarch64-apple-darwin x86_64-apple-darwin
+      - name: Package (universal DMG)
+        run: bash packaging/macos/package.sh --arch universal
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-universal
+          path: dist/release/*
+          if-no-files-found: error
+
+  release:
+    needs: [windows, macos]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(awk '/^\[workspace.package\]/{p=1;next} /^\[/{p=0} p && /^version *=/{gsub(/[" ]/,"",$0); split($0,a,"="); print a[2]; exit}' Cargo.toml)
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then TAG="${GITHUB_REF_NAME}"; else TAG="unigreen-v${VERSION}-build.${GITHUB_RUN_NUMBER}"; fi
+          cat > notes.md <<EOF
+          Unigreen Sound ${VERSION} (Unigreen build ${GITHUB_RUN_NUMBER}, commit ${GITHUB_SHA::7}).
+
+          Downloads
+          - Windows: \`*-windows-x64.msi\` (installer) or \`*-windows-x64-portable.zip\`
+          - macOS (Apple Silicon and Intel): \`*-macos-universal.dmg\`
+
+          These builds are not code-signed yet.
+          - Windows: if SmartScreen appears, click "More info" -> "Run anyway".
+          - macOS: right-click the app -> Open -> Open (first launch only), or run
+            \`xattr -dr com.apple.quarantine "/Applications/<App>.app"\`.
+
+          Based on SoundCraft by the ArtCraft team. Unigreen name and logo (c) Unigreen Power Co., Ltd.
+          EOF
+          gh release create "$TAG" artifacts/* --target "$GITHUB_SHA" --title "Unigreen Sound ${VERSION} (build ${GITHUB_RUN_NUMBER})" --notes-file notes.md
