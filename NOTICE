@@ -12,14 +12,19 @@ Third-party material
 This product bundles third-party material under its own licenses, listed below. The per-file
 list (author, source, license) is in ATTRIBUTION.md.
 
-None: every bundled asset is original to SoundCraft. Icons are drawn in code; demo audio is
+- Noto Sans Thai (Regular, Bold), Copyright 2022 The Noto Project Authors
+  (https://github.com/notofonts/thai), SIL Open Font License 1.1; see
+  assets/fonts/OFL-NotoSansThai.txt. Bundled as a UI fallback font for Thai text.
+
+Otherwise every bundled asset is original to SoundCraft. Icons are drawn in code; demo audio is
 synthesised in code. The egui default fonts (Ubuntu-Light, Hack, Noto Emoji, Emoji Icon Font) ship
 inside the egui crate under their own open licenses (see ATTRIBUTION.md).
 
 Unigreen Sound
 
 Unigreen Sound is a modified version of SoundCraft distributed by Unigreen Power Co., Ltd.
-Modifications: product name, app icons, colour theme and packaging metadata; the ArtCraft marks
-have been removed from the distribution as docs/brand/LICENSE-brand.txt requires. The Unigreen
+Modifications: product name, app icons, colour theme, help and contact links, a Thai UI fallback
+font and packaging metadata; the ArtCraft marks have been removed from the distribution as
+docs/brand/LICENSE-brand.txt requires. The Unigreen
 name and logo (assets/brand/, assets/app-icon/) are trademarks of Unigreen Power Co., Ltd. and are
 not licensed under MIT or Apache-2.0.

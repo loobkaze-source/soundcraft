@@ -1,5 +1,6 @@
 //! Fonts: egui's bundled defaults, plus the operating system's own UI fonts loaded at runtime when
-//! present (never redistributed). A "bold" family is always defined so the UI can use it.
+//! present (never redistributed), plus the bundled Noto Sans Thai (OFL-1.1, `assets/fonts/`) as a
+//! fallback for Thai text. A "bold" family is always defined so the UI can use it.
 
 use egui::{FontData, FontDefinitions, FontFamily};
 use std::sync::Arc;
@@ -76,10 +77,32 @@ fn load(_: &[(&str, u32)], _: bool) -> Option<FontData> {
     None
 }
 
+/// Bundled Thai fallback faces (never the primary UI font).
+const THAI_REGULAR: &str = "NotoSansThai-Regular";
+const THAI_BOLD: &str = "NotoSansThai-Bold";
+static THAI_REGULAR_TTF: &[u8] = include_bytes!("../../../assets/fonts/NotoSansThai-Regular.ttf");
+static THAI_BOLD_TTF: &[u8] = include_bytes!("../../../assets/fonts/NotoSansThai-Bold.ttf");
+
+/// Adds `name` as a fallback: after the primary fonts, before egui's emoji fonts (or last).
+fn insert_fallback(family: &mut Vec<String>, name: &str) {
+    let at = family.iter().position(|f| f == "NotoEmoji-Regular" || f == "emoji-icon-font").unwrap_or(family.len());
+    family.insert(at, name.into());
+}
+
 pub fn definitions() -> FontDefinitions {
     let mut fonts = FontDefinitions::default();
-    let base: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
-    let mut bold_family = base.clone();
+    fonts.font_data.insert(THAI_REGULAR.into(), Arc::new(FontData::from_static(THAI_REGULAR_TTF)));
+    fonts.font_data.insert(THAI_BOLD.into(), Arc::new(FontData::from_static(THAI_BOLD_TTF)));
+    if let Some(f) = fonts.families.get_mut(&FontFamily::Proportional) {
+        insert_fallback(f, THAI_REGULAR);
+    }
+    if let Some(f) = fonts.families.get_mut(&FontFamily::Monospace) {
+        f.push(THAI_REGULAR.into());
+    }
+    let mut bold_family: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
+    if let Some(i) = bold_family.iter().position(|f| f == THAI_REGULAR) {
+        bold_family[i] = THAI_BOLD.into();
+    }
     if let Some(reg) = load(REGULAR, false) {
         fonts.font_data.insert("system-regular".into(), Arc::new(reg));
         if let Some(f) = fonts.families.get_mut(&FontFamily::Proportional) {
@@ -98,4 +121,25 @@ pub fn definitions() -> FontDefinitions {
 
 pub fn install(ctx: &egui::Context) {
     ctx.set_fonts(definitions());
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn noto_sans_thai_is_a_fallback_never_primary() {
+        let fonts = definitions();
+        let pos = |fam: &FontFamily, name: &str| fonts.families[fam].iter().position(|f| f == name);
+        let prop = FontFamily::Proportional;
+        let thai = pos(&prop, THAI_REGULAR).expect("Thai in Proportional");
+        assert!(thai > pos(&prop, "Ubuntu-Light").expect("egui default font"));
+        assert!(pos(&prop, "NotoEmoji-Regular").is_none_or(|e| thai < e));
+        let mono = FontFamily::Monospace;
+        assert_eq!(pos(&mono, THAI_REGULAR), Some(fonts.families[&mono].len() - 1));
+        let bold = FontFamily::Name("bold".into());
+        assert!(pos(&bold, THAI_BOLD).is_some_and(|i| i > 0));
+        assert!(pos(&bold, THAI_REGULAR).is_none());
+        assert!(fonts.font_data.contains_key(THAI_REGULAR) && fonts.font_data.contains_key(THAI_BOLD));
+    }
 }

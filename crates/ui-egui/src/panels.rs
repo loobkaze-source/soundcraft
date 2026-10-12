@@ -503,8 +503,9 @@ fn about(app: &mut SoundApp, ctx: &egui::Context) {
                 ui.label(format!("Version {}", env!("CARGO_PKG_VERSION")));
                 ui.label("An open-source digital audio workstation by Unigreen, based on SoundCraft by the ArtCraft team and community.");
                 ui.label("Dual-licensed MIT OR Apache-2.0. Made with Rust and egui. Modifications (c) 2026 Unigreen Power Co., Ltd.");
-                ui.hyperlink_to("getartcraft.com/apps/soundcraft", "https://getartcraft.com/apps/soundcraft");
-                ui.hyperlink_to("Join us on Discord", "https://discord.gg/artcraft");
+                ui.hyperlink_to("Unigreen Sound Website", "https://unigreenpower.co.th");
+                ui.hyperlink_to("Contact Unigreen on LINE…", "https://line.me/R/ti/p/@unigreen.power")
+                    .on_hover_text("Contact Unigreen on LINE (@unigreen.power)");
             }
         }
     });

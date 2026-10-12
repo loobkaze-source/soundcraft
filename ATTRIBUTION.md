@@ -21,7 +21,9 @@ are bundled.
 
 ## Fonts
 
-SoundCraft bundles no font files. It uses the default fonts shipped inside the `egui` crate
+Unigreen Sound bundles one font family: Noto Sans Thai (Regular and Bold, `assets/fonts/`, OFL-1.1,
+licence text in `assets/fonts/OFL-NotoSansThai.txt`), compiled into the app as a UI fallback for Thai
+text; see Files below. Otherwise it uses the default fonts shipped inside the `egui` crate
 (Ubuntu-Light: Ubuntu Font Licence 1.0; Hack: MIT; Noto Emoji: OFL-1.1; emoji-icon-font: OFL-1.1/MIT)
 and, at runtime, the operating system's own UI fonts when available (never redistributed).
 
@@ -42,4 +44,6 @@ and, at runtime, the operating system's own UI fonts when available (never redis
 | `assets/app-icon/soundcraft.icns` | Unigreen Power Co., Ltd. | rendered from `icon.svg` | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
 | `assets/app-icon/soundcraft.ico` | Unigreen Power Co., Ltd. | rendered from `icon.svg` | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
 | `assets/app-icon/hicolor/` | Unigreen Power Co., Ltd. | rendered from `icon.svg` (16–512 px PNGs and the scalable SVG) | Unigreen trademark; not covered by MIT OR Apache-2.0 (see NOTICE) |
+| `assets/fonts/NotoSansThai-Regular.ttf` | The Noto Project Authors | Noto Sans Thai v2.0 (https://github.com/notofonts/thai, via Ubuntu fonts-noto-core); licence in `assets/fonts/OFL-NotoSansThai.txt` | OFL-1.1 |
+| `assets/fonts/NotoSansThai-Bold.ttf` | The Noto Project Authors | Noto Sans Thai v2.0 (https://github.com/notofonts/thai, via Ubuntu fonts-noto-core); licence in `assets/fonts/OFL-NotoSansThai.txt` | OFL-1.1 |
 | `docs/images/` | SoundCraft contributors | screenshots of SoundCraft rendered from the synthesised demo session | MIT OR Apache-2.0 |
